@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upcoming Holidays</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 467px;
+    height: 434px;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: transparent;
+    color: #002B45;
+  }
+
+  .widget {
+    width: 467px;
+    height: 434px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,43,69,0.12);
+  }
+
+  /* Header */
+  .header {
+    background: #002B45;
+    padding: 10px 14px 0;
+    flex-shrink: 0;
+  }
+
+  .header h1 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #00A9E0;
+    margin-bottom: 8px;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 2px;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 7px 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px 4px 0 0;
+    background: #004f7c;
+    color: #cce8f4;
+    transition: background 0.15s, color 0.15s;
+    text-transform: uppercase;
+  }
+
+  .tab:hover {
+    background: #006aa3;
+    color: #fff;
+  }
+
+  .tab.active {
+    background: #f4f8fb;
+    color: #002B45;
+    font-weight: 700;
+    border-top: 2px solid #00A9E0;
+  }
+
+  /* Content area */
+  .content {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .panel {
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px 14px 8px;
+    scrollbar-width: thin;
+    scrollbar-color: #c5d8e8 transparent;
+  }
+
+  .panel::-webkit-scrollbar { width: 4px; }
+  .panel::-webkit-scrollbar-track { background: transparent; }
+  .panel::-webkit-scrollbar-thumb { background: #c5d8e8; border-radius: 2px; }
+
+  .panel.active { display: block; }
+
+  /* Entries */
+  .entry {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddeaf3;
+  }
+
+  .entry:last-child { border-bottom: none; }
+
+  .date-col {
+    flex-shrink: 0;
+    width: 72px;
+  }
+
+  .date-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0073CF;
+    line-height: 1.2;
+  }
+
+  .date-day {
+    font-size: 9.5px;
+    color: #6b8fa8;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .entry-text {
+    font-size: 11.5px;
+    line-height: 1.35;
+    color: #002B45;
+    padding-top: 1px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 1px 5px;
+    border-radius: 2px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  .tag-federal { background: #002B45; color: #fff; }
+  .tag-marketing { background: #F0AB00; color: #002B45; }
+  .tag-social { background: #00A9E0; color: #fff; }
+  .tag-order {
+    background: #002B45;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .tag-order:hover {
+    background: #0073CF;
+  }
+</style>
+</head>
+<body>
+<div class="widget">
+  <div class="header">
+    <h1>Upcoming Holidays &amp; Key Dates</h1>
+    <div class="tabs">
+      <button class="tab active" onclick="show('mar')">March</button>
+      <button class="tab" onclick="show('apr')">April</button>
+      <button class="tab" onclick="show('may')">May</button>
+      <button class="tab" onclick="show('jun')">June</button>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- MARCH -->
+    <div class="panel active" id="panel-mar">
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Mar 17</div><div class="date-day">Tuesday</div></div>
+        <div class="entry-text">St. Patrick's Day <span class="tag tag-social">Social</span></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Mar 29</div><div class="date-day">Sunday</div></div>
+        <div class="entry-text">Time to Order Print Marketing for Tax Day (Apr 15) <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="/cdn-cgi/l/email-protection#c489a5b6afa1b0adaaa390ada7afa1b084a0a5b7a5a7b5b1adb7adb0adabaaeaa7aba9fbb7b1a6aea1a7b0f989a5b6afa1b0adaaa3e1f6f4a2abb6e1f6f490a5bce1f6f480a5bd">Order</a></div>
+      </div>
+    </div>
+
+    <!-- APRIL -->
+    <div class="panel" id="panel-apr">
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Apr 1</div><div class="date-day">Wednesday</div></div>
+        <div class="entry-text">April Fools' Day <span class="tag tag-social">Social</span></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Apr 7</div><div class="date-day">Tuesday</div></div>
+        <div class="entry-text">Last Day to Order Easter Print Marketing <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="/cdn-cgi/l/email-protection#135e72617876677a7d74477a7078766753777260727062667a607a677a7c7d3d707c7e2c606671797670672e5e72617876677a7d74362123757c61362123567260677661">Order</a></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Apr 15</div><div class="date-day">Wednesday</div></div>
+        <div class="entry-text">Tax Day <span class="tag tag-social">Social</span></div>
+      </div>
+    </div>
+
+    <!-- MAY -->
+    <div class="panel" id="panel-may">
+      <div class="entry">
+        <div class="date-col"><div class="date-num">May 1</div><div class="date-day">Friday</div></div>
+        <div class="entry-text">Last Day to Order Mother's Day Print Marketing <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="/cdn-cgi/l/email-protection#2b664a59404e5f42454c7f4248404e5f6b4f4a584a485a5e4258425f4244450548444614585e49414e485f16664a59404e5f42454c0e191b4d44590e191b66445f434e590e191c580e191b6f4a52">Order</a></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">May 4</div><div class="date-day">Monday</div></div>
+        <div class="entry-text">Order Print Marketing for Memorial Day <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="/cdn-cgi/l/email-protection#347955465f51405d5a53605d575f514074505547555745415d475d405d5b5a1a575b590b4741565e515740097955465f51405d5a53110604525b461106047951595b465d555811060470554d">Order</a></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">May 5</div><div class="date-day">Tuesday</div></div>
+        <div class="entry-text">Cinco de Mayo <span class="tag tag-social">Social</span></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">May 10</div><div class="date-day">Sunday</div></div>
+        <div class="entry-text">Mother's Day <span class="tag tag-federal">Holiday</span></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">May 12</div><div class="date-day">Tuesday</div></div>
+        <div class="entry-text">Last Day to Order Print Marketing for Memorial Day <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="/cdn-cgi/l/email-protection#80cde1f2ebe5f4e9eee7d4e9e3ebe5f4c0e4e1f3e1e3f1f5e9f3e9f4e9efeeaee3efedbff3f5e2eae5e3f4bdcde1f2ebe5f4e9eee7a5b2b0e6eff2a5b2b0cde5edeff2e9e1eca5b2b0c4e1f9">Order</a></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">May 25</div><div class="date-day">Monday</div></div>
+        <div class="entry-text">Memorial Day <span class="tag tag-federal">Federal</span></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">May 26</div><div class="date-day">Tuesday</div></div>
+        <div class="entry-text">Order Print Marketing for Father's Day (Jun 21) <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="/cdn-cgi/l/email-protection#d39eb2a1b8b6a7babdb487bab0b8b6a793b7b2a0b2b0a2a6baa0baa7babcbdfdb0bcbeeca0a6b1b9b6b0a7ee9eb2a1b8b6a7babdb4f6e1e3b5bca1f6e1e395b2a7bbb6a1f6e1e4a0f6e1e397b2aa">Order</a></div>
+      </div>
+    </div>
+
+    <!-- JUNE -->
+    <div class="panel" id="panel-jun">
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Jun 1</div><div class="date-day">Monday</div></div>
+        <div class="entry-text">Last Day to Order Print Marketing for Father's Day <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="/cdn-cgi/l/email-protection#f3be92819896879a9d94a79a90989687b3979280929082869a809a879a9c9ddd909c9ecc80869199969087cebe92819896879a9d94d6c1c3959c81d6c1c3b592879b9681d6c1c480d6c1c3b7928a">Order</a></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Jun 4</div><div class="date-day">Thursday</div></div>
+        <div class="entry-text">National Homeownership Month begins <span class="tag tag-social">Social</span></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Jun 7</div><div class="date-day">Sunday</div></div>
+        <div class="entry-text">Summer Is in 2 Weeks — Order Seasonal Marketing <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="/cdn-cgi/l/email-protection#8ec3effce5ebfae7e0e9dae7ede5ebfaceeaeffdefedfffbe7fde7fae7e1e0a0ede1e3b1fdfbece4ebedfab3c3effce5ebfae7e0e9abbcbee8e1fcabbcbeddfbe3e3ebfcabbcbeddebeffde1e0">Order</a></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Jun 19</div><div class="date-day">Friday</div></div>
+        <div class="entry-text">Juneteenth <span class="tag tag-federal">Federal</span></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Jun 20</div><div class="date-day">Saturday</div></div>
+        <div class="entry-text">Last Day to Order Print Marketing for July 4 <span class="tag ta
