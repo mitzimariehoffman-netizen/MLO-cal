@@ -97,10 +97,6 @@ body {
   display: block;
 }
 
-.panel.active {
-  visibility: visible;
-  position: relative;
-}
 
   .panel::-webkit-scrollbar { width: 4px; }
   .panel::-webkit-scrollbar-track { background: transparent; }
@@ -289,6 +285,7 @@ body {
  
 
 
+
 <script>
 let lockedWidgetHeight = 0;
 
@@ -296,7 +293,6 @@ function lockTallestPanelHeight() {
   const panels = document.querySelectorAll('.panel');
   const widget = document.querySelector('.widget');
   const header = document.querySelector('.header');
-
   let maxPanelHeight = 0;
 
   panels.forEach(panel => {
@@ -322,12 +318,12 @@ function show(month, el) {
   if (lockedWidgetHeight) {
     document.querySelector('.widget').style.minHeight =
       lockedWidgetHeight + 'px';
-   
+  }
 }
 
-window.a
-dEventListener('load', lockTallestPanelHeight);
+window.addEventListener('load', lockTallestPanelHeight);
 </script>
+
 
 </body>
 </html>
