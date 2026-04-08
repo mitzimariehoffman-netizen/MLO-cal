@@ -168,29 +168,17 @@
   <div class="header">
     <h1>Upcoming Holidays &amp; Key Dates</h1>
     <div class="tabs">
-      <button class="tab active" onclick="show('mar')">March</button>
-      <button class="tab" onclick="show('apr')">April</button>
-      <button class="tab" onclick="show('may')">May</button>
-      <button class="tab" onclick="show('jun')">June</button>
+      <button class="tab active" onclick="show('apr', this)">April</button>
+      <button class="tab" onclick="show('may', this)">May</button>
+      <button class="tab" onclick="show('jun', this)">June</button>
+      <button class="tab" onclick="show('jul', this)">July</button>
     </div>
   </div>
 
   <div class="content">
 
-    <!-- MARCH -->
-    <div class="panel active" id="panel-mar">
-      <div class="entry">
-        <div class="date-col"><div class="date-num">Mar 17</div><div class="date-day">Tuesday</div></div>
-        <div class="entry-text">St. Patrick's Day <span class="tag tag-social">Social</span></div>
-      </div>
-      <div class="entry">
-        <div class="date-col"><div class="date-num">Mar 29</div><div class="date-day">Sunday</div></div>
-        <div class="entry-text">Time to Order Print Marketing for Tax Day (Apr 15) <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="/cdn-cgi/l/email-protection#c489a5b6afa1b0adaaa390ada7afa1b084a0a5b7a5a7b5b1adb7adb0adabaaeaa7aba9fbb7b1a6aea1a7b0f989a5b6afa1b0adaaa3e1f6f4a2abb6e1f6f490a5bce1f6f480a5bd">Order</a></div>
-      </div>
-    </div>
-
     <!-- APRIL -->
-    <div class="panel" id="panel-apr">
+    <div class="panel active" id="panel-apr">
       <div class="entry">
         <div class="date-col"><div class="date-num">Apr 1</div><div class="date-day">Wednesday</div></div>
         <div class="entry-text">April Fools' Day <span class="tag tag-social">Social</span></div>
@@ -257,4 +245,36 @@
       </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">Jun 20</div><div class="date-day">Saturday</div></div>
-        <div class="entry-text">Last Day to Order Print Marketing for July 4 <span class="tag ta
+        <div class="entry-text">Last Day to Order Print Marketing for July 4 <span class="tag tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Marketing%20for%20July%204th">Order</a></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Jun 21</div><div class="date-day">Sunday</div></div>
+        <div class="entry-text">Father's Day <span class="tag tag-federal">Holiday</span></div>
+      </div>
+    </div>
+
+    <!-- JULY -->
+    <div class="panel" id="panel-jul">
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Jul 4</div><div class="date-day">Saturday</div></div>
+        <div class="entry-text">4th of July <span class="tag tag-federal">Federal</span></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Jul 19</div><div class="date-day">Sunday</div></div>
+        <div class="entry-text">Order Marketing for the Back-to-School Season <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Marketing%20for%20Back%20to%20School">Order</a></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function show(month, el) {
+    document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    document.getElementById('panel-' + month).classList.add('active');
+    el.classList.add('active');
+  }
+</script>
+</body>
+</html>
