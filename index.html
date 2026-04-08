@@ -289,23 +289,33 @@ body {
  
 
 <script>
+let lockedPanelHeight = 0;
 
 function lockTallestPanelHeight() {
   const panels = document.querySelectorAll('.panel');
   const content = document.querySelector('.content');
-  let maxHeight = 0;
 
   panels.forEach(panel => {
     panel.style.display = 'block';
-    maxHeight = Math.max(maxHeight, panel.scrollHeight);
+    lockedPanelHeight = Math.max(lockedPanelHeight, panel.scrollHeight);
     panel.style.display = 'none';
   });
 
-  content.style.minHeight = maxHeight + 'px';
-
-  panels.forEach(p => p.classList.remove('active'));
-  document.getElementById('panel-apr').classList.add('active');
+  content.style.minHeight = lockedPanelHeight + 'px';
 }
+
+function show(month, el) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+  document.getElementById('panel-' + month).classList.add('active');
+  el.classList.add('active');
+
+  // keep height stable
+  const content = document.querySelector('.content');
+  if (lockedPanelHeight) {
+    content.style.minHeight = lockedPanelHeight + 'px';
+ 
 
 }
 
