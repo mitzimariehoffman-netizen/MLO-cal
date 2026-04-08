@@ -80,10 +80,10 @@ body {
 
   /* Content area */
 .content {
+  flex: 1;
   position: relative;
   overflow-y: auto;
 }
-
 
 .panel {
   display: none;
@@ -289,21 +289,24 @@ body {
  
 
 <script>
+
 function lockTallestPanelHeight() {
   const panels = document.querySelectorAll('.panel');
   const content = document.querySelector('.content');
   let maxHeight = 0;
 
   panels.forEach(panel => {
-    panel.style.display = 'block';   // force render
+    panel.style.display = 'block';
     maxHeight = Math.max(maxHeight, panel.scrollHeight);
-    panel.style.display = 'none';    // hide again
+    panel.style.display = 'none';
   });
 
   content.style.minHeight = maxHeight + 'px';
 
-  // restore default active panel
-  panels[0].classList.add('active');
+  panels.forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-apr').classList.add('active');
+}
+
 }
 
 window.addEventListener('load', lockTallestPanelHeight);
