@@ -288,20 +288,28 @@ body {
 </script>
  
 
+
 <script>
-let lockedPanelHeight = 0;
+let lockedWidgetHeight = 0;
 
 function lockTallestPanelHeight() {
   const panels = document.querySelectorAll('.panel');
-  const content = document.querySelector('.content');
+  const widget = document.querySelector('.widget');
+  const header = document.querySelector('.header');
+
+  let maxPanelHeight = 0;
 
   panels.forEach(panel => {
     panel.style.display = 'block';
-    lockedPanelHeight = Math.max(lockedPanelHeight, panel.scrollHeight);
+    maxPanelHeight = Math.max(maxPanelHeight, panel.scrollHeight);
     panel.style.display = 'none';
   });
 
-  content.style.minHeight = lockedPanelHeight + 'px';
+  lockedWidgetHeight = maxPanelHeight + header.offsetHeight;
+  widget.style.minHeight = lockedWidgetHeight + 'px';
+
+  panels.forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-apr').classList.add('active');
 }
 
 function show(month, el) {
@@ -311,15 +319,14 @@ function show(month, el) {
   document.getElementById('panel-' + month).classList.add('active');
   el.classList.add('active');
 
-  // keep height stable
-  const content = document.querySelector('.content');
-  if (lockedPanelHeight) {
-    content.style.minHeight = lockedPanelHeight + 'px';
- 
-
+  if (lockedWidgetHeight) {
+    document.querySelector('.widget').style.minHeight =
+      lockedWidgetHeight + 'px';
+   
 }
 
-window.addEventListener('load', lockTallestPanelHeight);
+window.a
+dEventListener('load', lockTallestPanelHeight);
 </script>
 
 </body>
