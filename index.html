@@ -81,8 +81,9 @@ body {
   /* Content area */
 .content {
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
 }
+
 
 .panel {
   display: none;
@@ -299,7 +300,7 @@ function lockTallestPanelHeight() {
     panel.style.display = 'none';    // hide again
   });
 
-  content.style.height = maxHeight + 'px';
+  content.style.minHeight = maxHeight + 'px';
 
   // restore default active panel
   panels[0].classList.add('active');
