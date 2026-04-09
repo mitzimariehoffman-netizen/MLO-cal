@@ -8,15 +8,17 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    width: 100%;
-    margin: 0;
+    width: 467px;
+    height: 434px;
+    overflow: hidden;
     font-family: 'Segoe UI', sans-serif;
     background: transparent;
     color: #002B45;
   }
 
   .widget {
-    width: 100%;
+    width: 467px;
+    height: 434px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -32,7 +34,7 @@
   }
 
   .header h1 {
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -49,7 +51,7 @@
   .tab {
     flex: 1;
     padding: 7px 4px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-align: center;
@@ -62,7 +64,10 @@
     text-transform: uppercase;
   }
 
-  .tab:hover { background: #006aa3; color: #fff; }
+  .tab:hover {
+    background: #006aa3;
+    color: #fff;
+  }
 
   .tab.active {
     background: #f4f8fb;
@@ -71,16 +76,25 @@
     border-top: 2px solid #00A9E0;
   }
 
-  /* Content area — fixed height set by JS */
+  /* Content area */
   .content {
-    background: #f4f8fb;
+    flex: 1;
+    overflow: hidden;
     position: relative;
   }
 
   .panel {
     display: none;
+    height: 100%;
+    overflow-y: auto;
     padding: 10px 14px 8px;
+    scrollbar-width: thin;
+    scrollbar-color: #c5d8e8 transparent;
   }
+
+  .panel::-webkit-scrollbar { width: 4px; }
+  .panel::-webkit-scrollbar-track { background: transparent; }
+  .panel::-webkit-scrollbar-thumb { background: #c5d8e8; border-radius: 2px; }
 
   .panel.active { display: block; }
 
@@ -134,9 +148,9 @@
     vertical-align: middle;
   }
 
-  .tag-federal   { background: #002B45; color: #fff; }
+  .tag-federal { background: #002B45; color: #fff; }
   .tag-marketing { background: #F0AB00; color: #002B45; }
-  .tag-social    { background: #00A9E0; color: #fff; }
+  .tag-social { background: #00A9E0; color: #fff; }
   .tag-order {
     background: #002B45;
     color: #fff;
@@ -144,7 +158,9 @@
     cursor: pointer;
     transition: background 0.15s;
   }
-  .tag-order:hover { background: #0073CF; }
+  .tag-order:hover {
+    background: #0073CF;
+  }
 </style>
 </head>
 <body>
@@ -159,7 +175,7 @@
     </div>
   </div>
 
-  <div class="content" id="content">
+  <div class="content">
 
     <!-- APRIL -->
     <div class="panel active" id="panel-apr">
@@ -169,20 +185,20 @@
       </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">Apr 7</div><div class="date-day">Tuesday</div></div>
-        <div class="entry-text">Last Day to Order Easter Print Marketing <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Marketing%20for%20Easter">Order</a></div>
+        <div class="entry-text">Last Day to Order Easter Print Marketing <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Easter%20Print%20Marketing%20Order">Order</a></div>
       </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">Apr 15</div><div class="date-day">Wednesday</div></div>
         <div class="entry-text">Tax Day <span class="tag tag-social">Social</span></div>
       </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Apr 27</div><div class="date-day">Monday</div></div>
+        <div class="entry-text">Last Day to Order Mother's Day Print Marketing <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Mother%27s%20Day%20Print%20Marketing%20Order">Order</a></div>
+      </div>
     </div>
 
     <!-- MAY -->
     <div class="panel" id="panel-may">
-      <div class="entry">
-        <div class="date-col"><div class="date-num">May 1</div><div class="date-day">Friday</div></div>
-        <div class="entry-text">Last Day to Order Mother's Day Print Marketing <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Marketing%20for%20Mother%27s%20Day">Order</a></div>
-      </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">May 4</div><div class="date-day">Monday</div></div>
         <div class="entry-text">Order Print Marketing for Memorial Day <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Marketing%20for%20Memorial%20Day">Order</a></div>
@@ -240,7 +256,7 @@
     <!-- JULY -->
     <div class="panel" id="panel-jul">
       <div class="entry">
-        <div class="date-col"><div class="date-num">Jul 4</div><div class="date-day">Saturday</div></div>
+        <div class="date-col"><div class="date-num">Jul 4</div><div class="date-day">Friday</div></div>
         <div class="entry-text">4th of July <span class="tag tag-federal">Federal</span></div>
       </div>
       <div class="entry">
@@ -252,34 +268,6 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function show(month, el) {
-    document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
-    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
-    document.getElementById('panel-' + month).classList.add('active');
-    el.classList.add('active');
-  }
-
-  // Lock content area to the height of the tallest panel
-  window.addEventListener('load', function() {
-    var panels = document.querySelectorAll('.panel');
-    var content = document.getElementById('content');
-    var maxHeight = 0;
-
-    panels.forEach(function(p) {
-      p.style.display = 'block';
-      p.style.visibility = 'hidden';
-      maxHeight = Math.max(maxHeight, p.scrollHeight);
-      p.style.display = '';
-      p.style.visibility = '';
-    });
-
-    content.style.minHeight = maxHeight + 'px';
-
-    // Restore correct active panel
-    panels.forEach(function(p) { p.classList.remove('active'); });
-    document.getElementById('panel-apr').classList.add('active');
-  });
-</script>
-</body>
-</html>
+    document.queryS
