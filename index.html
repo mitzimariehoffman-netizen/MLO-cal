@@ -26,7 +26,6 @@
     box-shadow: 0 2px 12px rgba(0,43,69,0.12);
   }
 
-  /* Header */
   .header {
     background: #002B45;
     padding: 10px 14px 0;
@@ -42,11 +41,7 @@
     margin-bottom: 8px;
   }
 
-  /* Tabs */
-  .tabs {
-    display: flex;
-    gap: 2px;
-  }
+  .tabs { display: flex; gap: 2px; }
 
   .tab {
     flex: 1;
@@ -60,27 +55,16 @@
     border-radius: 4px 4px 0 0;
     background: #004f7c;
     color: #cce8f4;
-    transition: background 0.15s, color 0.15s;
+    transition: background 0.15s;
     text-transform: uppercase;
+    font-family: 'Segoe UI', sans-serif;
   }
 
-  .tab:hover {
-    background: #006aa3;
-    color: #fff;
-  }
-
-  .tab.active {
-    background: #f4f8fb;
-    color: #002B45;
-    font-weight: 700;
-    border-top: 2px solid #00A9E0;
-  }
-
-  /* Content area */
   .content {
     flex: 1;
     overflow: hidden;
     position: relative;
+    background: #f4f8fb;
   }
 
   .panel {
@@ -91,14 +75,11 @@
     scrollbar-width: thin;
     scrollbar-color: #c5d8e8 transparent;
   }
-
   .panel::-webkit-scrollbar { width: 4px; }
   .panel::-webkit-scrollbar-track { background: transparent; }
   .panel::-webkit-scrollbar-thumb { background: #c5d8e8; border-radius: 2px; }
-
   .panel.active { display: block; }
 
-  /* Entries */
   .entry {
     display: flex;
     align-items: flex-start;
@@ -106,35 +87,13 @@
     padding: 5px 0;
     border-bottom: 1px solid #ddeaf3;
   }
-
   .entry:last-child { border-bottom: none; }
 
-  .date-col {
-    flex-shrink: 0;
-    width: 72px;
-  }
+  .date-col { flex-shrink: 0; width: 72px; }
+  .date-num { font-size: 12px; font-weight: 700; color: #0073CF; line-height: 1.2; }
+  .date-day { font-size: 9.5px; color: #6b8fa8; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
 
-  .date-num {
-    font-size: 12px;
-    font-weight: 700;
-    color: #0073CF;
-    line-height: 1.2;
-  }
-
-  .date-day {
-    font-size: 9.5px;
-    color: #6b8fa8;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  .entry-text {
-    font-size: 11.5px;
-    line-height: 1.35;
-    color: #002B45;
-    padding-top: 1px;
-  }
+  .entry-text { font-size: 11.5px; line-height: 1.35; color: #002B45; padding-top: 1px; }
 
   .tag {
     display: inline-block;
@@ -147,10 +106,9 @@
     margin-left: 4px;
     vertical-align: middle;
   }
-
-  .tag-federal { background: #002B45; color: #fff; }
+  .tag-federal   { background: #002B45; color: #fff; }
   .tag-marketing { background: #F0AB00; color: #002B45; }
-  .tag-social { background: #00A9E0; color: #fff; }
+  .tag-social    { background: #00A9E0; color: #fff; }
   .tag-order {
     background: #002B45;
     color: #fff;
@@ -158,50 +116,28 @@
     cursor: pointer;
     transition: background 0.15s;
   }
-  .tag-order:hover {
-    background: #0073CF;
-  }
+  .tag-order:hover { background: #0073CF; }
 </style>
 </head>
 <body>
 <div class="widget">
   <div class="header">
     <h1>Upcoming Holidays &amp; Key Dates</h1>
-    <div class="tabs">
-      <button class="tab active" onclick="show('apr', this)">April</button>
-      <button class="tab" onclick="show('may', this)">May</button>
-      <button class="tab" onclick="show('jun', this)">June</button>
-      <button class="tab" onclick="show('jul', this)">July</button>
+    <div class="tabs" id="tabBar">
+      <button class="tab" data-panel="may">May</button>
+      <button class="tab" data-panel="jun">June</button>
+      <button class="tab" data-panel="jul">July</button>
+      <button class="tab" data-panel="aug">August</button>
     </div>
   </div>
 
   <div class="content">
 
-    <!-- APRIL -->
-    <div class="panel active" id="panel-apr">
-      <div class="entry">
-        <div class="date-col"><div class="date-num">Apr 1</div><div class="date-day">Wednesday</div></div>
-        <div class="entry-text">April Fools' Day <span class="tag tag-social">Social</span></div>
-      </div>
-      <div class="entry">
-        <div class="date-col"><div class="date-num">Apr 7</div><div class="date-day">Tuesday</div></div>
-        <div class="entry-text">Last Day to Order Easter Print Marketing <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Easter%20Print%20Marketing%20Order">Order</a></div>
-      </div>
-      <div class="entry">
-        <div class="date-col"><div class="date-num">Apr 15</div><div class="date-day">Wednesday</div></div>
-        <div class="entry-text">Tax Day <span class="tag tag-social">Social</span></div>
-      </div>
-      <div class="entry">
-        <div class="date-col"><div class="date-num">Apr 27</div><div class="date-day">Monday</div></div>
-        <div class="entry-text">Last Day to Order Mother's Day Print Marketing <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Mother%27s%20Day%20Print%20Marketing%20Order">Order</a></div>
-      </div>
-    </div>
-
     <!-- MAY -->
     <div class="panel" id="panel-may">
       <div class="entry">
         <div class="date-col"><div class="date-num">May 4</div><div class="date-day">Monday</div></div>
-        <div class="entry-text">Order Print Marketing for Memorial Day <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Marketing%20for%20Memorial%20Day">Order</a></div>
+        <div class="entry-text">Order Print Marketing for Memorial Day <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Memorial%20Day%20Print%20Marketing%20Order">Order</a></div>
       </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">May 5</div><div class="date-day">Tuesday</div></div>
@@ -213,7 +149,7 @@
       </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">May 12</div><div class="date-day">Tuesday</div></div>
-        <div class="entry-text">Last Day to Order Print Marketing for Memorial Day <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Marketing%20for%20Memorial%20Day">Order</a></div>
+        <div class="entry-text">Last Day to Order Print Marketing for Memorial Day <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Memorial%20Day%20Print%20Marketing%20Order">Order</a></div>
       </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">May 25</div><div class="date-day">Monday</div></div>
@@ -221,7 +157,7 @@
       </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">May 26</div><div class="date-day">Tuesday</div></div>
-        <div class="entry-text">Order Print Marketing for Father's Day (Jun 21) <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Marketing%20for%20Father%27s%20Day">Order</a></div>
+        <div class="entry-text">Order Print Marketing for Father's Day (Jun 21) <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Father%27s%20Day%20Print%20Marketing%20Order">Order</a></div>
       </div>
     </div>
 
@@ -229,7 +165,7 @@
     <div class="panel" id="panel-jun">
       <div class="entry">
         <div class="date-col"><div class="date-num">Jun 1</div><div class="date-day">Monday</div></div>
-        <div class="entry-text">Last Day to Order Print Marketing for Father's Day <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Marketing%20for%20Father%27s%20Day">Order</a></div>
+        <div class="entry-text">Last Day to Order Print Marketing for Father's Day <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Father%27s%20Day%20Print%20Marketing%20Order">Order</a></div>
       </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">Jun 4</div><div class="date-day">Thursday</div></div>
@@ -237,7 +173,7 @@
       </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">Jun 7</div><div class="date-day">Sunday</div></div>
-        <div class="entry-text">Summer Is in 2 Weeks — Order Seasonal Marketing <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Marketing%20for%20Summer%20Season">Order</a></div>
+        <div class="entry-text">Summer Is in 2 Weeks — Order Seasonal Marketing <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Summer%20Seasonal%20Marketing%20Print%20Order">Order</a></div>
       </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">Jun 19</div><div class="date-day">Friday</div></div>
@@ -245,7 +181,7 @@
       </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">Jun 20</div><div class="date-day">Saturday</div></div>
-        <div class="entry-text">Last Day to Order Print Marketing for July 4 <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Marketing%20for%20July%204th">Order</a></div>
+        <div class="entry-text">Last Day to Order Print Marketing for July 4 <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=July%204th%20Print%20Marketing%20Order">Order</a></div>
       </div>
       <div class="entry">
         <div class="date-col"><div class="date-num">Jun 21</div><div class="date-day">Sunday</div></div>
@@ -256,18 +192,80 @@
     <!-- JULY -->
     <div class="panel" id="panel-jul">
       <div class="entry">
-        <div class="date-col"><div class="date-num">Jul 4</div><div class="date-day">Friday</div></div>
-        <div class="entry-text">4th of July <span class="tag tag-federal">Federal</span></div>
+        <div class="date-col"><div class="date-num">Jul 4</div><div class="date-day">Saturday</div></div>
+        <div class="entry-text">Independence Day <span class="tag tag-federal">Federal</span></div>
       </div>
       <div class="entry">
-        <div class="date-col"><div class="date-num">Jul 19</div><div class="date-day">Sunday</div></div>
-        <div class="entry-text">Order Marketing for the Back-to-School Season <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Marketing%20for%20Back%20to%20School">Order</a></div>
+        <div class="date-col"><div class="date-num">Jul 11</div><div class="date-day">Friday</div></div>
+        <div class="entry-text">National Swimming Pool Day <span class="tag tag-social">Social</span></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Jul 19</div><div class="date-day">Saturday</div></div>
+        <div class="entry-text">Order Back-To-School Season Marketing <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Back-To-School%20Season%20Print%20Marketing%20Order">Order</a></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Jul 28</div><div class="date-day">Monday</div></div>
+        <div class="entry-text">Reorder Buyer and Seller Packets if Running Low <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Buyer%20and%20Seller%20Packets%20Reorder">Order</a></div>
+      </div>
+    </div>
+
+    <!-- AUGUST -->
+    <div class="panel" id="panel-aug">
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Aug 1</div><div class="date-day">Friday</div></div>
+        <div class="entry-text">Order Monthly EDDM/Postcard Campaign <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Monthly%20EDDM%2FPostcard%20Campaign%20Print%20Order">Order</a></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Aug 7</div><div class="date-day">Friday</div></div>
+        <div class="entry-text">Order Custom Campaign Package <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Custom%20Campaign%20Package%20Print%20Order">Order</a></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Aug 19</div><div class="date-day">Wednesday</div></div>
+        <div class="entry-text">Order Print Marketing for Labor Day (Sep 7) <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Labor%20Day%20Print%20Marketing%20Order">Order</a></div>
+      </div>
+      <div class="entry">
+        <div class="date-col"><div class="date-num">Aug 28</div><div class="date-day">Friday</div></div>
+        <div class="entry-text">Last Day to Order Print Marketing for Labor Day <span class="tag tag-marketing">Print</span> <a class="tag tag-order" href="mailto:MarketingTicket@dasacquisition.com?subject=Labor%20Day%20Print%20Marketing%20Order">Order</a></div>
       </div>
     </div>
 
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  function show(month, el) {
-    document.queryS
+<script>
+  function applyTabStyles() {
+    document.querySelectorAll('.tab').forEach(function(t) {
+      var active = t.classList.contains('active');
+      t.style.setProperty('background', active ? '#f4f8fb' : '#004f7c', 'important');
+      t.style.setProperty('color', active ? '#002B45' : '#cce8f4', 'important');
+      t.style.setProperty('font-weight', active ? '700' : '600', 'important');
+      t.style.setProperty('border-top', active ? '2px solid #00A9E0' : 'none', 'important');
+    });
+  }
+
+  function show(id) {
+    document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    document.getElementById('panel-' + id).classList.add('active');
+    document.querySelector('[data-panel="' + id + '"]').classList.add('active');
+    applyTabStyles();
+  }
+
+  document.querySelectorAll('.tab').forEach(function(t) {
+    t.addEventListener('click', function() { show(t.dataset.panel); });
+    t.addEventListener('mouseover', function() {
+      if (!t.classList.contains('active')) {
+        t.style.setProperty('background', '#006aa3', 'important');
+        t.style.setProperty('color', '#fff', 'important');
+      }
+    });
+    t.addEventListener('mouseout', applyTabStyles);
+  });
+
+  document.querySelector('[data-panel="may"]').classList.add('active');
+  document.getElementById('panel-may').classList.add('active');
+  setTimeout(applyTabStyles, 50);
+  setTimeout(applyTabStyles, 200);
+</script>
+</body>
+</html>
